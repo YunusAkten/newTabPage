@@ -8,7 +8,7 @@ function App() {
 			<div className="d-flex gap-4 container mainText  ">
 				<Clock></Clock>
 				<Search></Search>
-				<h1 className="display  text-light">İyi Günler,X</h1>
+				<h3 className="display  text-light">İyi Günler,X</h3>
 			</div>
 		</>
 	);

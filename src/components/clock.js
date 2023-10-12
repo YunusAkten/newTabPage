@@ -6,8 +6,8 @@ function Clock() {
 	const [date, setDate] = useState(moment().format("DD/MM/YYYY"));
 	return (
 		<div className="text-center">
-			<h1 className="display  text-light ">{time}</h1>
-			<h3 className="display text-light">{date}</h3>
+			<h1 className="display-1 bold fs  text-light ">{time}</h1>
+			<h3 className=" text-light">{date}</h3>
 		</div>
 	);
 }
