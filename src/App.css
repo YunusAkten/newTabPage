@@ -9,14 +9,18 @@
 	z-index: -1;
 	transform: scale3d(1.1, 1.1, 1.1);
 }
-.mainText {
+.mainSection {
 	height: 100vh !important;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 50% !important;
 }
-.searchBar {
-	width: 30% !important;
+form {
+	width: 100%;
 	min-width: 200px;
+}
+.shortcutDiv {
+	max-width: 50px !important;
 }

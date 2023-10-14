@@ -1,15 +1,17 @@
 import "./App.css";
 import Clock from "./components/clock";
 import Search from "./components/search";
+import Shortcuts from "./components/shortcuts";
 function App() {
 	return (
 		<>
 			<div className="bg"></div>
-			<div className="d-flex gap-4 container mainText  ">
+			<section className="d-flex gap-4 container mainSection  ">
 				<Clock></Clock>
 				<Search></Search>
 				<h3 className="display  text-light">İyi Günler,X</h3>
-			</div>
+				<Shortcuts></Shortcuts>
+			</section>
 		</>
 	);
 }
