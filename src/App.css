@@ -1,3 +1,6 @@
+*{
+	font-family:Arial, Helvetica, sans-serif
+}
 .bg {
 	background-image: url(images/an-alluring-evening.jpg);
 	background-repeat: no-repeat;
@@ -8,7 +11,7 @@
 	position: fixed;
 	z-index: -1;
 	transform: scale3d(1.1, 1.1, 1.1);
-}
+	}
 .mainSection {
 	height: 100vh !important;
 	display: flex;
@@ -21,11 +24,25 @@ form {
 	width: 60%;
 	min-width: 200px;
 }
-.shortcutDiv {
-	max-width: 50px !important;
+.shortcutIconDiv {
+	max-width:60px !important;
+	min-width: 50px !important;
 }
-.shortcutDiv:hover {
+.shortcutIconDiv:hover {
 	cursor: pointer;
 	position: relative;
 	top: -2px;
+}
+.shortcutIconDiv>img {
+	width: 100%;
+	margin: 0 auto;
+	min-width: 25px;
+}
+.shortcutDiv>a{
+	text-decoration: none;
+	color: #fff;
+	text-transform: ca;
+}
+.shortcutDiv>a:hover{
+	text-decoration: underline;
 }
