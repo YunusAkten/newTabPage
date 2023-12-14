@@ -5,6 +5,7 @@ function shortcut({ domain }) {
     "https://www.google.com/s2/favicons?domain=" + domain + "&sz=32";
   const url = "http://" + domain;
   const siteName = domain.split(".")[0];
+  console.log(!iconUrl);
   function goToSite() {
     window.location.href = url;
   }
