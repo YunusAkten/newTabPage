@@ -8,10 +8,34 @@ import alluringEvening from "./images/an-alluring-evening.jpg";
 import settingsIcon from "./images/gear-fill.svg";
 function App() {
   const [wallpaper, setWallpaper] = useState(localStorage["fileBase64"]);
-
+  const [shortcuts, setShortcuts] = useState(
+    JSON.parse(localStorage.getItem("shortcuts")) || [
+      "github.com",
+      "youtube.com",
+      "reddit.com",
+      "twitter.com",
+      "instagram.com",
+      "linkedin.com",
+      "netflix.com",
+    ]
+  );
+  if (shortcuts && shortcuts.length > 0) {
+    const body = document.querySelector("body");
+    body.addEventListener("keydown", (e) => {
+      shortcuts.forEach((shortcut, index) => {
+        if (e.key === (index + 1).toString()) {
+          window.location.href = "https://" + shortcut;
+        }
+      });
+    });
+  }
   const [blur, setBlur] = useState(localStorage["blur"] === "true");
   const [hideSettings, setHideSettings] = useState(true);
   const [name, setName] = useState(localStorage["name"] || "");
+  const changeShortcuts = (value) => {
+    setShortcuts(value);
+    window.localStorage.setItem("shortcuts", JSON.stringify(value));
+  };
   const changeBlur = (value) => {
     setBlur(value);
     const blur = document.querySelector(".bg");
@@ -39,7 +63,7 @@ function App() {
         <h3 className="display  text-capitalize text-light">
           İyi Günler {name}
         </h3>
-        <Shortcuts></Shortcuts>
+        <Shortcuts shortcuts={shortcuts}></Shortcuts>
         <img
           onClick={() => {
             setHideSettings(!hideSettings);
@@ -56,6 +80,8 @@ function App() {
           name={name}
           changeName={changeName}
           defaultWallpaper={defaultWallpaper}
+          shortcuts={shortcuts}
+          changeShortcuts={changeShortcuts}
         ></Settings>
       </section>
     </>

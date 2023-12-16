@@ -8,6 +8,8 @@ function settings({
   name,
   changeName,
   defaultWallpaper,
+  shortcuts,
+  changeShortcuts,
 }) {
   function handleChange(e) {
     window.localStorage.clear("fileBase64");
@@ -31,8 +33,8 @@ function settings({
     });
   };
   return (
-    <div hidden={hideSettings} className=" settingsDiv ">
-      <div className="container-fluid mt-2">
+    <div hidden={hideSettings} className="m- settingsDiv ">
+      <div className="container-fluid  mt-2">
         <div className="backgroundSettings">
           <h2 className="m-1 ">Arka Plan</h2>
 
@@ -76,6 +78,52 @@ function settings({
           onChange={(e) => changeName(e.target.value)}
         ></input>
         <hr></hr>
+        <div className="shortcutSettings">
+          <h2 className="m-1">Kısayollar</h2>
+          {shortcuts.length !== 0 &&
+            shortcuts.map((shortcut, index) => {
+              return (
+                <div className="row m-2 rounded  align-center border ">
+                  <p className=" col-6 mb-0 mt-1   w-75">
+                    {shortcut} Tuş kısayolu {index + 1}
+                  </p>
+                  <button
+                    onClick={() => {
+                      const newShortcuts = shortcuts.filter(
+                        (item) => item !== shortcut
+                      );
+                      changeShortcuts(newShortcuts);
+                    }}
+                    className="btn  col-2 m-1 ms-auto btn-sm btn-warning  "
+                  >
+                    X
+                  </button>
+                </div>
+              );
+            })}
+          <div className="row ">
+            <h3 className=" mx-1  mt-2 col-10">Kısayol Ekle</h3>
+            <input
+              id="shortcut"
+              className="form-control col-6  mx-3 w-50"
+              placeholder="Örn: youtube.com"
+            ></input>
+            <button
+              onClick={() => {
+                const newShortcuts = [...shortcuts];
+                const shortcut = document.getElementById("shortcut").value;
+                if (shortcut === "") return;
+                if (newShortcuts.includes(shortcut)) return;
+
+                newShortcuts.push(shortcut);
+                changeShortcuts(newShortcuts);
+              }}
+              className="btn col-2  btn-sm btn-success ms-1"
+            >
+              Ekle
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
